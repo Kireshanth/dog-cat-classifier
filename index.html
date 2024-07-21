@@ -8,13 +8,16 @@ layout: page
 <script type="module">
   import { Client } from 'https://cdn.jsdelivr.net/npm/@gradio/client/dist/index.min.js';
 
-  async function loaded(reader) {
+  async function loaded(file) {
     try {
-      console.log(reader.result);
+      console.log(file);
       const client = await Client.connect("kireshanth/cat-dog-classifier");
+
+      // Ensure the data is in the format expected by the predict method
       const result = await client.predict({
-        img: reader.result
+        img: file // Passing the File object directly
       });
+
       console.log(result.data);
 
       // Display the result in the results div
@@ -26,9 +29,11 @@ layout: page
   }
 
   function read() {
-    const reader = new FileReader();
-    reader.addEventListener('load', () => loaded(reader));
-    reader.readAsDataURL(document.getElementById('photo').files[0]);
+    const fileInput = document.getElementById('photo');
+    if (fileInput.files.length > 0) {
+      const file = fileInput.files[0];
+      loaded(file); // Pass the File object directly
+    }
   }
 
   document.getElementById('photo').addEventListener('change', read);
