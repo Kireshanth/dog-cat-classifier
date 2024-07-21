@@ -4,7 +4,8 @@ layout: page
 ---
 
 <input id="photo" type="file">
-<div id="results"></div>
+<div id="prediction-label"></div>
+<div id="prediction-confidence"></div>
 <script type="module">
   import { Client } from 'https://cdn.jsdelivr.net/npm/@gradio/client/dist/index.min.js';
 
@@ -17,17 +18,18 @@ layout: page
     });
 
     console.log(result.data)
-    //const label = result.data[0]['label']
-    //const confidence = result.data[0]['confidences']['label']
+
     const { label, confidences } = result.data[0];
     const confidence = confidences.find(c => c.label === label).confidence;
 
-    document.getElementById('results').innerText = 'The model predicts: ' + label + ' confidence: '  + confidence;
+    document.getElementById('prediction-label').innerText = 'The model predicts: ' + label;
+    document.getElementById('prediction-confidence').innerText = 'Confidence:' + confidence;
+
 
   
   } catch (error) {
       console.error('Error:', error);
-      document.getElementById('results').innerText = 'An error occurred: ' + error.message;
+      document.getElementById('prediction-label').innerText = 'An error occurred: ' + error.message;
     } 
   }
 
