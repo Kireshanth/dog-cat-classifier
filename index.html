@@ -10,29 +10,13 @@ layout: page
 
   async function loaded(file) {
     try {
-      /*console.log(file);
-      const client = await Client.connect("kireshanth/cat-dog-classifier");
-
-      const app_info = await client.view_api();
-
-      console.log(app_info);
-
-      // Ensure the data is in the format expected by the predict method
-      const result = await client.predict({
-        img: file // Passing the File object directly
-      });
-
-      // Display the result in the results div
-      document.getElementById('results').innerText = JSON.stringify(result.data)
-      
-    */
                 
     const client = await Client.connect("kireshanth/cat-dog-classifier");
     const result = await client.predict("/predict", { 
             img: file, 
     });
 
-    console.log(result.data);
+    document.getElementById('results').innerText = JSON.stringify(result.data['label'])
 
   
   } catch (error) {
