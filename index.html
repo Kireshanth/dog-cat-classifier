@@ -5,8 +5,9 @@ layout: page
 
 <input id="photo" type="file">
 <div id="results"></div>
-<script src="https://cdn.jsdelivr.net/npm/@gradio/client/dist/index.min.js"></script>
 <script>
+  import { Client } from "@gradio/client";
+  
   async function loaded(reader) {
     try {
       const client = await Client.connect("kireshanth/cat-dog-classifier");
