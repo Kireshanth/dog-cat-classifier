@@ -17,10 +17,12 @@ layout: page
     });
 
     console.log(result.data)
-    const label = result.data[0]['label']
-    //const confidence = result.data[0]['confidence']['label']
+    //const label = result.data[0]['label']
+    //const confidence = result.data[0]['confidences']['label']
+    const { label, confidences } = result.data[0];
+    const confidence = confidences.find(c => c.label === label).confidence;
 
-    document.getElementById('results').innerText = 'The model predicts: ' + label + ' confidence: ' ;
+    document.getElementById('results').innerText = 'The model predicts: ' + label + ' confidence: '  + confidence;
 
   
   } catch (error) {
