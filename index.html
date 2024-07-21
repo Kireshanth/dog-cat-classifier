@@ -16,7 +16,7 @@ layout: page
             img: file, 
     });
 
-    document.getElementById('results').innerText = JSON.stringify(result.data[0]['label'])
+    document.getElementById('results').innerText = "The model predicts it is a ${result.data[0]['label']}"
 
   
   } catch (error) {
