@@ -16,7 +16,9 @@ layout: page
             img: file, 
     });
 
-    document.getElementById('results').innerText = "The model predicts it is a ${result.data[0]['label']}"
+    const label = result.data[0]['label']
+
+    document.getElementById('results').innerText = 'The model predicts: ' + label;
 
   
   } catch (error) {
