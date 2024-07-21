@@ -32,6 +32,7 @@ layout: page
     const fileInput = document.getElementById('photo');
     if (fileInput.files.length > 0) {
       const file = fileInput.files[0];
+      console.log(file)
       loaded(file); // Pass the File object directly
     }
   }
