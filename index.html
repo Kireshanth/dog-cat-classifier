@@ -28,6 +28,7 @@ layout: page
     */
 
     const response_0 = await fetch("https://raw.githubusercontent.com/gradio-app/gradio/main/test/test_files/bus.png");
+    console.log(response_0)
     const exampleImage = await response_0.blob();
                 
     const client = await Client.connect("kireshanth/cat-dog-classifier");
