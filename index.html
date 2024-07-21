@@ -10,7 +10,7 @@ layout: page
 
   async function loaded(file) {
     try {
-      console.log(file);
+      /*console.log(file);
       const client = await Client.connect("kireshanth/cat-dog-classifier");
 
       const app_info = await client.view_api();
@@ -18,16 +18,30 @@ layout: page
       console.log(app_info);
 
       // Ensure the data is in the format expected by the predict method
-      /*const result = await client.predict({
-        img: file.blob() // Passing the File object directly
-      });*/
+      const result = await client.predict({
+        img: file // Passing the File object directly
+      });
 
       // Display the result in the results div
-      document.getElementById('results').innerText = JSON.stringify(result.data);
-    } catch (error) {
+      document.getElementById('results').innerText = JSON.stringify(result.data)
+      
+    */
+
+    const response_0 = await fetch("https://raw.githubusercontent.com/gradio-app/gradio/main/test/test_files/bus.png");
+    const exampleImage = await response_0.blob();
+                
+    const client = await Client.connect("kireshanth/cat-dog-classifier");
+    const result = await client.predict("/predict", { 
+            img: exampleImage, 
+    });
+
+    console.log(result.data);
+
+  
+  } catch (error) {
       console.error('Error:', error);
       document.getElementById('results').innerText = 'An error occurred: ' + error.message;
-    }
+    } 
   }
 
   function read() {
