@@ -9,7 +9,7 @@ layout: page
 <script>
   async function loaded(reader) {
     try {
-      const client = await Gradio.Client.connect("kireshanth/cat-dog-classifier");
+      const client = await Client.connect("kireshanth/cat-dog-classifier");
       const result = await client.predict("/predict", { 
         img: reader.result
       });
