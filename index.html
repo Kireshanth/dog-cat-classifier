@@ -16,7 +16,7 @@ layout: page
             img: file, 
     });
 
-    document.getElementById('results').innerText = JSON.stringify(result.data)
+    document.getElementById('results').innerText = JSON.stringify(result.data[0]['label'])
 
   
   } catch (error) {
