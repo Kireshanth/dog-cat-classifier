@@ -6,8 +6,8 @@ layout: page
 <input id="photo" type="file">
 <div id="results"></div>
 <script type="module">
-  import { Client } from "https://cdn.jsdelivr.net/npm/@gradio/client/dist/index.esm.js";
-
+  import { Client } from "@gradio/client";
+  console.log(Client)
   async function loaded(reader) {
     try {
       const client = await Client.connect("kireshanth/cat-dog-classifier");
