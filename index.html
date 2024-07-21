@@ -8,9 +8,9 @@ layout: page
 <script src="https://cdn.jsdelivr.net/npm/@gradio/client/dist/index.min.js"></script>
 <script type="module">
   import { Client } from 'https://cdn.jsdelivr.net/npm/@gradio/client/dist/index.min.js';
-  console.log(Client)
   async function loaded(reader) {
     try {
+      console.log(reader.result)
       const client = await Client.connect("kireshanth/cat-dog-classifier");
       const result = await client.predict("/predict", { 
         img: reader.result
