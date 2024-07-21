@@ -15,10 +15,8 @@ layout: page
 
       // Ensure the data is in the format expected by the predict method
       const result = await client.predict({
-        img: file // Passing the File object directly
+        img: file.blob() // Passing the File object directly
       });
-
-      console.log(result.data);
 
       // Display the result in the results div
       document.getElementById('results').innerText = JSON.stringify(result.data);
@@ -32,7 +30,6 @@ layout: page
     const fileInput = document.getElementById('photo');
     if (fileInput.files.length > 0) {
       const file = fileInput.files[0];
-      console.log(file)
       loaded(file); // Pass the File object directly
     }
   }
