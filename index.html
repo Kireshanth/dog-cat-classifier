@@ -17,8 +17,9 @@ layout: page
     });
 
     const label = result.data[0]['label']
+    const confidence = result.data[0]['confidence']['label']
 
-    document.getElementById('results').innerText = 'The model predicts: ' + label;
+    document.getElementById('results').innerText = 'The model predicts: ' + label + ' confidence: ' + confidence;
 
   
   } catch (error) {
