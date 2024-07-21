@@ -26,14 +26,10 @@ layout: page
       document.getElementById('results').innerText = JSON.stringify(result.data)
       
     */
-
-    const response_0 = await fetch("https://raw.githubusercontent.com/gradio-app/gradio/main/test/test_files/bus.png");
-    console.log(response_0)
-    const exampleImage = await response_0.blob();
                 
     const client = await Client.connect("kireshanth/cat-dog-classifier");
     const result = await client.predict("/predict", { 
-            img: exampleImage, 
+            img: file, 
     });
 
     console.log(result.data);
