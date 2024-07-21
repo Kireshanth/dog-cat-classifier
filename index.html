@@ -1,5 +1,5 @@
 ---
-title: home
+title: Dog or Cat?
 layout: page
 ---
 
@@ -17,15 +17,11 @@ layout: page
             img: file, 
     });
 
-    console.log(result.data)
-
     const { label, confidences } = result.data[0];
     const confidence = confidences.find(c => c.label === label).confidence;
 
     document.getElementById('prediction-label').innerText = 'The model predicts: ' + label;
     document.getElementById('prediction-confidence').innerText = 'Confidence:' + confidence;
-
-
   
   } catch (error) {
       console.error('Error:', error);
